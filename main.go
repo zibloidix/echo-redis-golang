@@ -4,6 +4,7 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -11,6 +12,7 @@ import (
 
 func main() {
 	e := echo.New()
+	e.Static("/", "res")
 	e.Use(middleware.Logger())
 	e.GET("/", home)
 	e.GET("/q/:id", queue)
@@ -21,9 +23,11 @@ func main() {
 func home(c echo.Context) error {
 	ip1, ip2, ip3 := getIPs(c)
 	agent := getAgent(c)
+	ml := getTime()
+	mls := fmt.Sprintf("%d", ml)
 	hash := getHash(ip1, ip2, ip3, agent)
 
-	return c.String(http.StatusOK, "IPs and User agent:\n"+ip1+"\n"+ip2+"\n"+ip3+"\n"+agent+"\n"+"\nHash: "+hash)
+	return c.String(http.StatusOK, "IPs and User agent:\n"+ip1+"\n"+ip2+"\n"+ip3+"\n"+agent+"\n"+"\nHash: "+hash+"\n"+mls)
 }
 
 func queue(c echo.Context) error {
@@ -46,4 +50,8 @@ func getHash(ip1, ip2, ip3, agent string) string {
 	hash := sha1.New()
 	hash.Write([]byte([]byte(ip1 + ip2 + ip3 + agent)))
 	return fmt.Sprintf("%x", hash.Sum(nil))
+}
+
+func getTime() int64 {
+	return time.Now().UnixNano() / int64(time.Millisecond)
 }

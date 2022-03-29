@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/vue.js"></script>
+    <link href="/css/app.css" rel="stylesheet">
+    <script src="/js/app.js"></script>
+
+    
+    <title>Очереди пользователя</title>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="row pt-3">
+            <div class="col-12">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-10">
+                                <span v-if="state == 'load'">
+                                    LOAD
+                                </span>
+                                <span v-if="state == 'get-patient-data'">
+                                    <kbd class="px-2">1</kbd><span class="ps-2">Указать данные пациента</span>
+                                </span>
+                            </div>
+                            <div class="col-2 text-end">
+                                <div class="spinner-grow spinner-grow-sm" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="btn-group d-flex pt-3" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="btnradio1">Вызвать себе</label>
+                          
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio2">Вызвать другому</label>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-12">
+                                <label class="form-label">Фамилия</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-12">
+                                <label class="form-label">Имя</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-12">
+                                <label class="form-label">Отчество</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-12">
+                                <label class="form-label">Дата рождения</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-check form-switch pt-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Пол: Женский</label>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-12">
+                                <label class="form-label">СНИЛС</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-4">
+                                <label class="form-label">Серия</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-8">
+                                <label class="form-label">Номер полиса</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="border-bottom my-4"></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="form-label">Адрес</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-12">
+                                <label class="form-label">Причина вызова</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-primary" type="button">Далее</button>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

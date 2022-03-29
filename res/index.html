@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/vue.js"></script>
+    <link href="/css/app.css" rel="stylesheet">
+    <script src="/js/app.js"></script>
+    <title>Сервис по работе с очередями</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Админ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Пользователь</a>
+              </li>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-6 pt-4">
+                <div class="card shadow-sm border-2">
+                    <div class="card-body">
+                        <h5 class="card-title pb-4">Редактор очереди</h5>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="queue-uuid" class="form-label">Идентификатор очереди</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" aria-describedby="get-new-uuid" id="queue-uuid">
+                                    <button class="btn btn-outline-primary" type="button" id="get-new-uuid">Новый UUID</button>
+                                </div>
+                                <label for="queue-name" class="form-label">Название очереди</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="queue-name">
+                                </div>
+                                <label for="queue-name" class="form-label">Время жизни очереди</label>
+                                <select class="form-select form-select mb-3" aria-label=".form-select-lg example">
+                                    <option selected>Откройте список для выбора</option>
+                                    <option value="60">1 минута</option>
+                                    <option value="300">5 минут</option>
+                                    <option value="1800">30 минут</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-3">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 pt-4">
+                <div class="card border-2">
+                    <div class="card-body">
+                        <h5 class="card-title pb-4">Список очередей</h5>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">Кабинет 25</div>
+                                <span class="text-secondary font-monospace fs-6">aa74aa4a-a9be-4b07-a165-75ccd63e5b17</span>
+                              </div>
+                              <span class="badge bg-primary rounded-pill">20</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">Кабинет 35</div>
+                                <span class="text-secondary font-monospace fs-6">cc1bf649-8211-4f0e-ad07-0d5e358a8ddf</span>
+                              </div>
+                              <span class="badge bg-primary rounded-pill">10</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">Кабинет 45</div>
+                                <span class="text-secondary font-monospace fs-6">cd4654a4-51a2-48ba-a3ee-ae877c157915</span>
+                              </div>
+                              <span class="badge bg-primary rounded-pill">15</span>
+                            </li>
+                          </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
