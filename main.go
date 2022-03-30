@@ -12,7 +12,6 @@ import (
 
 func main() {
 	e := echo.New()
-	e.Static("/", "res")
 	e.Use(middleware.Logger())
 	e.GET("/", home)
 	e.GET("/q/:id", queue)
