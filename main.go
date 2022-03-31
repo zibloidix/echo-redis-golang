@@ -4,6 +4,7 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"net/http"
+
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -12,11 +13,13 @@ import (
 
 func main() {
 	e := echo.New()
-	e.Use(middleware.Logger())
+	loggerConfig := getLoggerConfig()
+	e.Use(middleware.LoggerWithConfig(loggerConfig))
 	e.GET("/", home)
 	e.GET("/q/:id", queue)
 
 	e.Logger.Fatal(e.Start(":3000"))
+
 }
 
 func home(c echo.Context) error {
@@ -53,4 +56,14 @@ func getHash(ip1, ip2, ip3, agent string) string {
 
 func getTime() int64 {
 	return time.Now().UnixNano() / int64(time.Millisecond)
+}
+
+func getLoggerConfig() middleware.LoggerConfig {
+	logFormat := `${remote_ip} - - [${time_custom}] "${method} ${path} ${protocol}" ${status} ${bytes_out} "${referer}" "${user_agent}"` + "\n"
+	customTimeFormat := "2/Jan/2006:15:04:05 -0700"
+
+	return middleware.LoggerConfig{
+		Format:           logFormat,
+		CustomTimeFormat: customTimeFormat,
+	}
 }
