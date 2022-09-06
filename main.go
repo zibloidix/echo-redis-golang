@@ -12,6 +12,7 @@ import (
 )
 
 func main() {
+	fmt.Println("App starting")
 	e := echo.New()
 	loggerConfig := getLoggerConfig()
 	e.Use(middleware.LoggerWithConfig(loggerConfig))
